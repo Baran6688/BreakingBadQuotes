@@ -20,26 +20,27 @@ function Generate() {
     setauth(author);
   };
 
+
   return (
-    <div class="">
-      <div class="card text-bg-dark ">
+    <div className="">
+      <div className="card text-bg-dark ">
         <img
           src="https://www.revelstokereview.com/wp-content/uploads/2022/06/29555729_web1_220630-KCN-Breaking-Bad-_1.jpg"
-          class="card-bg-img "
+          className="card-bg-img "
           alt="..."
           id="imageGen"
         />
 
         <div
-          class="card-img-overlay container square-box d-flex justify-content-center align-items-center text-center"
+          className="card-img-overlay container square-box d-flex justify-content-center align-items-center text-center"
           id="conts"
         >
           <div>
-            <h2 class="card-title mb-5">Quotes!</h2>
-            <p class="card-text">
+            <h2 className="card-title mb-5">Quotes!</h2>
+            <p className="card-text">
               "<big> {quotation} </big>"
             </p>
-            <p class="card-text">
+            <p className="card-text">
               <small>-{auth}</small>
             </p>
             <button

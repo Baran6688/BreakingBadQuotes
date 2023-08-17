@@ -1,13 +1,24 @@
 body {
     transition: all ease-in-out 0.3s;
-    
+
+    background-color: #415d43;
+    color: #fff;
+
 }
 
-#conts {
-    background-color: #315f31b1;
+#cardiv {
+    background-color: #6096ba;
 }
 
+#cardBody {
+    background-color: #fff;
+}
 
-.bbCard{
-    width: max-content;
+#cardY {
+    background-color: #c7f9cc;
+    color: "#415d43"
+}
+
+.navbar {
+    background-color: #70a9a1;
 }

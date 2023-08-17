@@ -1,5 +1,4 @@
 import {
-  Routes,
   Route,
   createBrowserRouter,
   RouterProvider,
@@ -9,6 +8,7 @@ import RootLayout from "./components/layout/RootLayout";
 import About from "./components/pages/About";
 import Generate from "./components/pages/Generator";
 import Home from "./components/pages/home";
+import Favourites, { getFavourites } from "./components/pages/favourites";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +16,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/generator" element={<Generate />} />
+      <Route path="/generator" element={<Generate />} />
+      <Route path="/favourites" element={< Favourites />} loader={getFavourites} />
     </Route>
   )
 );
