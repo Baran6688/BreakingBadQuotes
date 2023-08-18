@@ -8,28 +8,31 @@ const favs = useLoaderData()
 
 
 
-    return(
-        <>
-   {favs && favs.map((fav)=>( 
-   
-   <div className="card text-center mb-3" key={fav._id}> 
-   <div className="card-header" id="cardY" >
-     {fav.author}
-   </div>
-   <div className="card-body" id="cardBody">
-     <h5 className="card-title" style={{color: "#415d43"}}>{fav.quote}</h5>
-  
-   </div>
-   <div className="card-footer text-body-secondary" id="cardY">
-   { moment(new Date(fav.createdAt)).fromNow()}
-   </div>
- </div>
-   ))}
-   
-        </>
-    )
-}
+return(
+//     <div className="card text-center" style={{width: "700px"}} id="genBody">
 
+//   <div className="card-body" id="genBody">
+//     <h5 className="card-title" id="textBody">"{quotation}"</h5>
+//     <p className="card-text" id="textBody"> -{auth}</p>
+//     </div>
+<>
+{favs && favs.map((fav)=>(   
+     <div
+     className="d-flex justify-content-center  text-center"
+
+   > 
+    <div className="card text-center mt-3" style={{width: "700px"}} id="genBody">
+
+  <div className="card-body" id="genBody">
+    <h5 className="card-title" id="textBody"> "{fav.quote}"</h5>
+    <p className="card-text" id="textBody">- {fav.author} </p>
+    </div>
+    </div>
+    </div>
+))}  
+</>
+)}
+// { moment(new Date(fav.createdAt)).fromNow()}
 export default Favourites
 
 
@@ -41,3 +44,4 @@ export const getFavourites = async() => {
     return json
 
 }
+

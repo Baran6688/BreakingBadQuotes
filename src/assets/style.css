@@ -1,17 +1,18 @@
 body {
     transition: all ease-in-out 0.3s;
 
-    background-color: #415d43;
     color: #fff;
+    background-color: #70a9a1;
+    /* 
+    background-repeat: no-repeat;
+    background-size: 1700px 840px; */
 
-}
 
-#cardiv {
-    background-color: #6096ba;
 }
 
 #cardBody {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+
 }
 
 #cardY {
@@ -20,5 +21,23 @@ body {
 }
 
 .navbar {
-    background-color: #70a9a1;
+    background-color: #415d43;
+
+}
+
+.nav-link {
+    color: white;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+#genBody {
+    background-color: #415d4364;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.11)
+}
+
+#textBody {
+    color: white;
 }
