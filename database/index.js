@@ -25,6 +25,9 @@ app.use((req, res, next) => {
 const favouritesRouter = require("./routers/favourites")
 app.use("/api/favourites", favouritesRouter)
 
+const UserRoutes = require("./routers/userRoutes")
+app.use("/api/user", UserRoutes)
+
 
 
 
