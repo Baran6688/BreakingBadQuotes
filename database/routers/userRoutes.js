@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const jwt = require("jsonwebtoken")
+const requireAuth = require("../middlewares/requireAuth")
 const User = require("../model/UserModel")
 
 
@@ -37,6 +38,48 @@ router.post("/login", async (req, res) => {
         res.status(400).json({ error: e.message })
 
     }
+})
+
+
+router.post("/save", requireAuth, async (req, res) => {
+    const UserId = req.user._id
+    const { quote, author } = req.body
+    try {
+        const user = await User.findByIdAndUpdate(UserId, { $push: { favourites: { quote, author } } })
+        await user.save()
+        console.log(user)
+        res.status(200).json(user)
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+})
+
+router.delete("/remove/:id", requireAuth, async (req, res) => {
+    const UserId = req.user._id
+    const QuoteId = req.params.id
+    console.log(QuoteId)
+
+    try {
+        const user = await User.findByIdAndUpdate(UserId, { $pull: { favourites: { _id: QuoteId } } })
+        await user.save()
+        res.status(200).json(user.favourites)
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+
+})
+
+router.get("/favourites", requireAuth, async (req, res) => {
+    const UserId = req.user._id
+    try {
+        const favourites = await User.findById(UserId).select("favourites")
+
+        res.status(200).json(favourites)
+
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+
 })
 
 

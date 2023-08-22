@@ -19,7 +19,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    favourites: [{ quote: String, author: String }]
+    favourites: [{ quote: { type: String }, author: { type: String } }]
 
 })
 
