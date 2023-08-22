@@ -5,14 +5,14 @@ import App from "./App.jsx";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.js";
 import "./assets/style.css";
-import moment from "moment/moment.js";
+
 
 import { AuthContexProvider } from "./context/AuthContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContexProvider>
-    <App />
+      <App />
     </AuthContexProvider>
   </React.StrictMode>
 );

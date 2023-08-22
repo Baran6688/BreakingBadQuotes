@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AuthContex } from "../../context/AuthContext";
 
-export default UseAuthContext = () => {
+export const UseAuthContext = () => {
     const context = useContext(AuthContex)
 
-    if(!context) {
+    if (!context) {
         throw Error("USE AUTH CONTEXT")
     }
     return context

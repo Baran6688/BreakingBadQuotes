@@ -3,18 +3,18 @@ import { useLogin } from "../utils/UseLogin"
 
 
 const Login = () => {
-    const [email,setEmail] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const {login, error} = useLogin()
+    const { login, error } = useLogin()
 
-    const handleSubmit =async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        await login(email,password)
+        await login(email, password)
     }
 
     return (
-       <>
-        <form className="login" onSubmit={handleSubmit}>
+        <>
+            <form className="login" onSubmit={(e) => handleSubmit(e)}>
                 <h3>Login</h3>
                 <label>Email: </label>
                 <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
@@ -27,7 +27,7 @@ const Login = () => {
                 {error && <div className="error">{error}</div>}
 
             </form>
-            </>
+        </>
     )
 }
 
