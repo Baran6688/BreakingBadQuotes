@@ -1,20 +1,8 @@
-import { useLoaderData } from "react-router-dom"
-import moment from "moment/moment"
-
 
 function Favourites() {
 
-const favs = useLoaderData()
-
-
-
 return(
-//     <div className="card text-center" style={{width: "700px"}} id="genBody">
 
-//   <div className="card-body" id="genBody">
-//     <h5 className="card-title" id="textBody">"{quotation}"</h5>
-//     <p className="card-text" id="textBody"> -{auth}</p>
-//     </div>
 <>
 {favs && favs.map((fav)=>(   
      <div
@@ -30,18 +18,11 @@ return(
     </div>
     </div>
 ))}  
+{!favs && <h1>NOTHING IS HERE</h1>}
 </>
 )}
 // { moment(new Date(fav.createdAt)).fromNow()}
 export default Favourites
 
 
-export const getFavourites = async() => {
-     const res= await fetch("/api/favourites/")
-
-    const json = await res.json()
-   
-    return json
-
-}
 

@@ -6,9 +6,11 @@ import {
 } from "react-router-dom";
 import RootLayout from "./components/layout/RootLayout";
 import About from "./components/pages/About";
-import Generate, { FormAction } from "./components/pages/Generator";
+import Generate from "./components/pages/Generator";
 import Home from "./components/pages/home";
-import Favourites, { getFavourites } from "./components/pages/favourites";
+import Favourites from "./components/pages/favourites";
+import Login from "./components/pages/Login";
+import { SignUP } from "./components/pages/SignUp";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +19,9 @@ const router = createBrowserRouter(
       <Route path="/about" element={<About />} />
       <Route path="/generator" element={<Generate />} />
       <Route path="/generator" element={<Generate />} />
-      <Route path="/favourites" element={< Favourites />} loader={getFavourites}  action={FormAction}/>
+      <Route path="/favourites" element={< Favourites />} />
+      <Route path="/SignUP" element={<SignUP />} />
+      <Route path="/login" element={<Login />} />
     </Route>
   )
 );

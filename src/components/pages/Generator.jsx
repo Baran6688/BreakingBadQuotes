@@ -1,21 +1,10 @@
 import { useState } from "react";
-import { Form, useLoaderData } from "react-router-dom";
 function Generate() {
   //    States
   const [quotation, setQuote] = useState("Generate Quotes from Breaking Bad!!");
   const [auth, setauth] = useState("Author");
 
   //   Functions;
-  const handleQuote = async () => {
-    //   Geting Fetching, and Exporting Data
-    console.log("Got IT!")
-    let res = await fetch("https://api.breakingbadquotes.xyz/v1/quotes");
-    const resJson = await res.json();
-    const { quote, author } = resJson[0];
-    //  Seting Data
-    setQuote(quote);
-    setauth(author);
-  };
 
 
 
@@ -42,12 +31,12 @@ function Generate() {
     <h5 className="card-title" id="textBody">"{quotation}"</h5>
     <p className="card-text" id="textBody"> -{auth}</p>
     {/* <button className="btn btn-success" onClick={() => { handleQuote(); }}> Genarate Quote </button> */}
-    <Form method="POST" action="/favourites">
-      <input type="text" name="quote" value={quotation} hidden  onChange={()=> {}}  />
-      <input type="text" name="author" value={auth} hidden onChange={()=> {}}  />
-      <button type="button" className="btn btn-success me-2" onClick={() => { handleQuote(); }}> Genarate Quote </button>
+    <form >
+      <input type="text" name="quote" hidden  />
+      <input type="text" name="author"  hidden />
+      <button type="button" className="btn btn-success me-2" > Genarate Quote </button>
       <button type="submit" className="btn btn-success" > Save to Favourites </button>
-    </Form>
+    </form>
   </div>
  
 </div>
@@ -60,21 +49,3 @@ function Generate() {
 
 export default Generate;
 
-export const FormAction = async ({ request }) => {
-  const data = await request.formData();
-  const submittion = {
-    author: data.get("author"),
-    quote: data.get("quote")
-
- 
-  };
-  const response = await fetch("/api/favourites", {
-    method: "POST",
-    body: JSON.stringify(submittion),
-    headers: { "Content-Type": "application/json" },
-  });
-
-  const json = await response.json();
-  console.log(json)
-
-};

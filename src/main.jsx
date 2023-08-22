@@ -7,8 +7,12 @@ import "../node_modules/bootstrap/dist/js/bootstrap.js";
 import "./assets/style.css";
 import moment from "moment/moment.js";
 
+import { AuthContexProvider } from "./context/AuthContext.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <AuthContexProvider>
     <App />
+    </AuthContexProvider>
   </React.StrictMode>
 );
