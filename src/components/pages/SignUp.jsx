@@ -22,18 +22,18 @@ export const SignUP = () => {
     return (
         <>
             <form className="login" onSubmit={(e) => handleSubmit(e)}>
-                <h3>Sign Up:</h3>
+                <h3 className="mb-3">Sign Up</h3>
 
-                <input type="name" onChange={(e) => setName(e.target.value)} value={name} placeholder="name" />
+                <input className="form-control" type="name" onChange={(e) => setName(e.target.value)} value={name} placeholder="name" />
 
                 <label>Email: </label>
-                <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
+                <input className="form-control" type="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
 
                 <label>Password: </label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
+                <input className="form-control" type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
 
 
-                <button>Login</button>
+                <button className="btn btn-light mt-3">Login</button>
                 {error && <div className="error">{error}</div>}
 
             </form>

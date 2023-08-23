@@ -11,22 +11,31 @@ import Home from "./components/pages/home";
 import Favourites from "./components/pages/favourites";
 import Login from "./components/pages/Login";
 import { SignUP } from "./components/pages/SignUp";
+import { UseAuthContext } from "./components/utils/UseAuthContex";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/generator" element={<Generate />} />
-      <Route path="/generator" element={<Generate />} />
-      <Route path="/favourites" element={< Favourites />} />
-      <Route path="/SignUP" element={<SignUP />} />
-      <Route path="/login" element={<Login />} />
-    </Route>
-  )
-);
+
+
+
+
 
 function App() {
+  const { user } = UseAuthContext()
+
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/generator" element={<Generate />} />
+        <Route path="/generator" element={<Generate />} />
+        <Route path="/favourites" element={user ? < Favourites /> : <Login Message="You Should First Login to have Favourites" />} />
+        <Route path="/SignUP" element={!user ? <SignUP /> : <Home />} />
+        <Route path="/login" element={!user ? <Login /> : <Home />} />
+      </Route>
+    )
+  );
+
   return <RouterProvider router={router} />;
 }
 export default App;

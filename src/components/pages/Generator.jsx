@@ -5,11 +5,22 @@ function Generate() {
   const [quotation, setQuote] = useState("Generate Quotes from Breaking Bad!!");
   const [auth, setauth] = useState("Author");
   const { user } = UseAuthContext()
+  const [message, setMessage] = useState(null)
+
 
 
   //   Functions;
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+
+
+    if (!user || user === null) {
+      setMessage("Login to save quotes!!")
+      return
+    }
+
+
     const res = await fetch("/api/user/save", {
       method: "POST",
       headers: {
@@ -19,8 +30,8 @@ function Generate() {
       body: JSON.stringify({ author: auth, quote: quotation })
     })
 
-    const json = res.json()
-    console.log(json)
+    const json = await res.json()
+    setMessage(json.message)
 
   }
 
@@ -59,19 +70,21 @@ function Generate() {
               <h5 className="card-title" id="textBody">"{quotation}"</h5>
               <p className="card-text" id="textBody"> -{auth}</p>
               {/* <button className="btn btn-success" onClick={() => { handleQuote(); }}> Genarate Quote </button> */}
-              <form onSubmit={(e) => handleSubmit(e)}>
+              <form >
                 <input type="text" name="quote" hidden />
                 <input type="text" name="author" hidden />
                 <button type="button" onClick={handleQuote} className="btn btn-success me-2" > Genarate Quote </button>
-                <button type="submit" className="btn btn-success" > Save to Favourites </button>
+                <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-success" > Save to Favourites </button>
+
               </form>
+              <span id="textBody" onClick={() => setMessage(null)} >{message}</span>
             </div>
 
           </div>
 
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

@@ -3,6 +3,7 @@ import { UseAuthContext } from "./UseAuthContex";
 
 
 export const useLogin = () => {
+
     const [error, setError] = useState(null)
     const { dispatch } = UseAuthContext()
 
@@ -22,7 +23,7 @@ export const useLogin = () => {
         if (res.ok) {
             localStorage.setItem("user", JSON.stringify(json))
             dispatch({ type: "LOGIN", payload: json })
-            setError("null")
+            setError(null)
         }
     }
 

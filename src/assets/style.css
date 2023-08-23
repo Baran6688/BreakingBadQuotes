@@ -2,10 +2,8 @@ body {
     transition: all ease-in-out 0.3s;
 
     color: #fff;
-    background-color: #70a9a1;
-    /* 
-    background-repeat: no-repeat;
-    background-size: 1700px 840px; */
+    background-color: #198754;
+
 
 
 }
@@ -21,12 +19,12 @@ body {
 }
 
 .navbar {
-    background-color: #415d43;
+    background-color: #919343;
 
 }
 
 .nav-link {
-    color: white;
+    /* color: black; */
 }
 
 .navbar-brand {
@@ -40,4 +38,8 @@ body {
 
 #textBody {
     color: white;
+}
+
+.active {
+    color: #726a6a;
 }

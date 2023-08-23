@@ -17,7 +17,7 @@ export const useSignUp = () => {
 
 
         const json = await res.json()
-        console.log(json)
+
 
         if (!res.ok) {
             setError(json.error)

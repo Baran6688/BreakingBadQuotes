@@ -1,11 +1,22 @@
 import { NavLink } from "react-router-dom";
+import { UseAuthContext } from "../utils/UseAuthContex";
+
+
+
+
+
 
 function Navbar() {
+  const { user, dispatch } = UseAuthContext()
+  // console.log(user.name.toUpperCase())
+  const handleClick = () => {
+    dispatch({ type: "LOGOUT" })
+  }
   return (
     <div className="mb-3">
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg bg-warning" data-bs-theme="dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             Breaking Bad
           </a>
           <button
@@ -33,8 +44,30 @@ function Navbar() {
               <NavLink className="nav-link " to="/favourites">
                 Favourites
               </NavLink>
+
+
+
             </div>
+
           </div>
+          <ul className="navbar-nav">
+            {user &&
+              <>
+                <li className="nav-link disabled" id="textBody"> {user.name.toUpperCase()} </li>
+                <li className="nav-link" onClick={handleClick}> Logout </li>
+              </>}
+
+            {!user &&
+              <>
+                <NavLink className="nav-link" to="/login">
+                  Login
+                </NavLink>
+                <NavLink className="nav-link" to="/signup">
+                  Sing Up
+                </NavLink>
+              </>
+            }
+          </ul>
         </div>
       </nav>
     </div>

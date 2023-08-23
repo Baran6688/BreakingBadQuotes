@@ -19,9 +19,9 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    favourites: [{ quote: { type: String }, author: { type: String } }]
+    favourites: [{ quote: { type: String }, author: { type: String }, date: { type: Date, default: Date.now() } }]
 
-})
+}, { timestamps: true })
 
 
 UserSchema.statics.signup = async function (name, email, password) {
