@@ -1,0 +1,96 @@
+body {
+    transition: all ease-in-out 0.3s;
+
+    background-color: #2F4B26;
+    color: #FCCA46;
+    font-family: Rubik;
+
+
+}
+
+#cardBody {
+    background-color: rgb(255, 255, 255, 0.1);
+    border-color: #FCCA46;
+
+}
+
+#green {
+    color: #2F4B26;
+}
+
+#grey {
+    color: rgba(0, 0, 0, 0.287);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.postBody {
+    background-color: #FCCA46;
+    border-radius: 4px;
+    border-color: #FCCA46;
+}
+
+#cardY {
+    background-color: #c7f9cc;
+    color: "#415d43"
+}
+
+.navbar {
+    background-color: #FCCA46;
+}
+
+.nav-link {
+    color: #7EA172;
+    font-weight: bold;
+}
+
+
+
+
+.navbar-brand {
+    color: rgb(29, 92, 11);
+}
+
+#genBody {
+    background-color: #415d4364;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.11);
+}
+
+#textBody {
+    color: #FCCA46;
+
+}
+
+
+
+
+
+#username {
+    color: #7EA172;
+}
+
+#logout:hover {
+    color: #C1292E;
+}
+
+#logout:active {
+    color: #7EA172;
+}
+
+#sign:hover {
+    color: #2b6119;
+}
+
+#sign:active {
+    color: #2b6119;
+}
+
+.nav-link:hover {
+    color: #2b6119;
+}
+
+.nav-link:active {
+    color: #331b1b;
+}
