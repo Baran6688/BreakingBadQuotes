@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
+  Navigate,
 } from "react-router-dom";
 import RootLayout from "./components/layout/RootLayout";
 import About from "./components/pages/About";
@@ -28,10 +29,9 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/generator" element={<Generate />} />
-        <Route path="/generator" element={<Generate />} />
         <Route path="/favourites" element={user ? < Favourites /> : <Login Message="You Should First Login to have Favourites" />} />
-        <Route path="/SignUP" element={!user ? <SignUP /> : <Home />} />
-        <Route path="/login" element={!user ? <Login /> : <Home />} />
+        <Route path="/SignUP" element={!user ? <SignUP /> : <Navigate to="/" />} />
+        <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
       </Route>
     )
   );

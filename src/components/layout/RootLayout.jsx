@@ -8,7 +8,7 @@ function RootLayout() {
         <Navbar />
       </header>
 
-      <main className="container bg-success">
+      <main className="container">
         <Outlet />
       </main>
     </div>

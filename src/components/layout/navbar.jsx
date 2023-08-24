@@ -13,64 +13,77 @@ function Navbar() {
     dispatch({ type: "LOGOUT" })
   }
   return (
-    <div className="mb-3">
-      <nav className="navbar navbar-expand-lg bg-warning" data-bs-theme="dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            Breaking Bad
+    <>
+
+
+      <nav class="navbar navbar-expand-lg mb-3" data-bs-theme="light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <img src="https://1000logos.net/wp-content/uploads/2023/04/Breaking-Bad-Logo.png" alt="Breaking Bad"
+              width="auto" height="40" />
           </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <NavLink className="nav-link " to="/">
-                Home
-              </NavLink>
-              <NavLink className="nav-link " to="/about">
-                About
-              </NavLink>
-              <NavLink className="nav-link " to="/generator">
-                Generator
-              </NavLink>
-              <NavLink className="nav-link " to="/favourites">
-                Favourites
-              </NavLink>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li class="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="/about">
+                  About
+                </NavLink>
+              </li>
+              <li class="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="/generator">
+                  Generator
+                </NavLink>
+              </li>
+              <li class="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="/favourites">
+                  Favourites
+                </NavLink>
+              </li>
 
+            </ul>
+            <form class="d-flex navbar-nav"  >
+              {user &&
+                <>
+                  <NavLink className="nav-link disabled " id="username"  > {user.name.toUpperCase()} </NavLink>
+                  <button className="nav-link" onClick={handleClick} id="logout"> Logout </button>
+                </>}
 
+              {!user &&
+                <>
+                  <NavLink className="nav-link" id="sign" to="/login">
+                    Login
+                  </NavLink>
+                  <NavLink className="nav-link" id="sign" to="/signup">
+                    Sing Up
+                  </NavLink>
+                </>
+              }
 
-            </div>
-
+            </form>
           </div>
-          <ul className="navbar-nav">
-            {user &&
-              <>
-                <li className="nav-link disabled" id="textBody"> {user.name.toUpperCase()} </li>
-                <li className="nav-link" onClick={handleClick}> Logout </li>
-              </>}
-
-            {!user &&
-              <>
-                <NavLink className="nav-link" to="/login">
-                  Login
-                </NavLink>
-                <NavLink className="nav-link" to="/signup">
-                  Sing Up
-                </NavLink>
-              </>
-            }
-          </ul>
         </div>
       </nav>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+    </>
   );
 }
 

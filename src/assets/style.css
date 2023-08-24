@@ -1,15 +1,15 @@
 body {
     transition: all ease-in-out 0.3s;
 
-    color: #fff;
-    background-color: #198754;
-
+    background-color: #2F4B26;
+    color: #ffffff;
+    font-family: Rubik;
 
 
 }
 
 #cardBody {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgb(255, 255, 255, 0.1);
 
 }
 
@@ -19,16 +19,19 @@ body {
 }
 
 .navbar {
-    background-color: #919343;
-
+    background-color: #FCCA46;
 }
 
 .nav-link {
-    /* color: black; */
+    color: #7EA172;
+    font-weight: bold;
 }
 
+
+
+
 .navbar-brand {
-    color: white;
+    color: rgb(29, 92, 11);
 }
 
 #genBody {
@@ -40,6 +43,34 @@ body {
     color: white;
 }
 
-.active {
-    color: #726a6a;
+
+
+
+
+#username {
+    color: #7EA172;
+}
+
+#logout:hover {
+    color: #C1292E;
+}
+
+#logout:active {
+    color: #7EA172;
+}
+
+#sign:hover {
+    color: #2b6119;
+}
+
+#sign:active {
+    color: #2b6119;
+}
+
+.nav-link:hover {
+    color: #2b6119;
+}
+
+.nav-link:active {
+    color: #331b1b;
 }
