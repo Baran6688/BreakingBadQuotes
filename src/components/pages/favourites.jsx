@@ -32,6 +32,7 @@ function Favourites() {
     setFavs(favourites.reverse())
   }
 
+
   useEffect(() => { fetchData() }, [])
 
 
