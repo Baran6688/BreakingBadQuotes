@@ -28,7 +28,7 @@ const Posts = () => {
         }
 
 
-        const res = await fetch("/api/post", {
+        const res = await fetch("https://bb-api.onrender.com/api/post", {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${user.token}`,
@@ -51,7 +51,7 @@ const Posts = () => {
     }
 
     const handleDelete = async (id) => {
-        const res = await fetch("/api/post/" + id, {
+        const res = await fetch("https://bb-api.onrender.com/api/post/" + id, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

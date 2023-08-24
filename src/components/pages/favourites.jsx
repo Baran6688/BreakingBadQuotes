@@ -15,7 +15,7 @@ function Favourites() {
 
   const handleDelete = async (id) => {
 
-    const res = await fetch("/api/user/remove/" + id, {
+    const res = await fetch("https://bb-api.onrender.com/api/user/remove/" + id, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}` },
     })
@@ -25,7 +25,7 @@ function Favourites() {
   }
 
   const fetchData = async () => {
-    const res = await fetch("/api/user/favourites", {
+    const res = await fetch("https://bb-api.onrender.com/api/user/favourites", {
       headers: { 'Authorization': `Bearer ${user.token}` }
     })
     const { favourites } = await res.json()
