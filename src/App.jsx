@@ -8,7 +8,7 @@ import {
 import RootLayout from "./components/layout/RootLayout";
 import About from "./components/pages/About";
 import Generate from "./components/pages/Generator";
-import Home from "./components/pages/home";
+import Home from "./components/pages/Home";
 import Favourites from "./components/pages/favourites";
 import Login from "./components/pages/Login";
 import { SignUP } from "./components/pages/SignUp";
