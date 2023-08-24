@@ -14,7 +14,7 @@ const Posts = () => {
         const res = await fetch("https://bb-api.onrender.com/api/post")
         const json = await res.json()
         if (res.ok) {
-            setPosts(json.reverse())
+            setPosts(json)
         }
         if (!res.ok) {
             setMessage(json.error)
