@@ -11,7 +11,7 @@ const Posts = () => {
     const { user } = UseAuthContext()
 
     const fetchData = async () => {
-        const res = await fetch("https://breakingb.pages.dev/api/post")
+        const res = await fetch("https://bb-api.onrender.com/api/post")
         const json = await res.json()
         if (res.ok) {
             setPosts(json.reverse())
