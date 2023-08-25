@@ -2,6 +2,8 @@ import moment from "moment/moment"
 import { useEffect } from "react"
 import { useState } from "react"
 import { UseAuthContext } from "../utils/UseAuthContex"
+import { UseIsLoading } from "../utils/UseIsLoading"
+
 
 const Posts = () => {
 
@@ -9,15 +11,19 @@ const Posts = () => {
     const [message, setMessage] = useState(null)
     const [text, setText] = useState("")
     const { user } = UseAuthContext()
+    const { isLoading, setIsLoading } = UseIsLoading()
 
     const fetchData = async () => {
+        setIsLoading(true)
         const res = await fetch("https://bb-api.onrender.com/api/post")
         const json = await res.json()
         if (res.ok) {
             setPosts(json)
+            setIsLoading(false)
         }
         if (!res.ok) {
             setMessage(json.error)
+            setIsLoading(true)
         }
     }
 
@@ -84,16 +90,22 @@ const Posts = () => {
 
     return (<>
         <h1>Posts</h1>
+
         <div className="mb-3">
             <label htmlFor="exampleFormControlTextarea1" className="form-label">Say Something....</label>
             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e) => { setText(e.target.value) }} value={text}></textarea>
             <button className="btn btn-success mt-1" id="textBody" onClick={() => { handlePost() }}>Submit</button>
         </div>
+
         {message &&
             <div className="alert alert-success" role="alert" id="cardBody" onClick={() => setMessage("")}>
                 <span id="textBody"> {message} </span>
             </div>
         }
+
+        {isLoading === true && <div className=" d-flex justify-content-center text-center mb-3"> <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </div> </div>}
         {posts &&
             posts.map((post) => {
                 return (

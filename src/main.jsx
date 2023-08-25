@@ -8,11 +8,16 @@ import "./assets/style.css";
 
 
 import { AuthContexProvider } from "./context/AuthContext.jsx";
+import { IsLoadingProvider } from "./context/IsLoadingContex.jsx";
+
+IsLoadingProvider
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContexProvider>
-      <App />
+      <IsLoadingProvider>
+        <App />
+      </IsLoadingProvider>
     </AuthContexProvider>
   </React.StrictMode>
 );

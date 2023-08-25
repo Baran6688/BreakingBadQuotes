@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
-import { json, Navigate, redirect } from "react-router-dom"
 import { UseAuthContext } from "../utils/UseAuthContex"
+import { UseIsLoading } from "../utils/UseIsLoading";
 
 function Favourites() {
 
@@ -10,10 +10,12 @@ function Favourites() {
   const { user } = UseAuthContext()
   const [favs, setFavs] = useState("")
   const [flash, setFlash] = useState(null)
+  const { isLoading, setIsLoading } = UseIsLoading()
 
 
 
   const handleDelete = async (id) => {
+    setIsLoading(true)
 
     const res = await fetch("https://bb-api.onrender.com/api/user/remove/" + id, {
       method: "DELETE",
@@ -22,31 +24,44 @@ function Favourites() {
     const json = await res.json()
     await fetchData()
     setFlash(json.message)
+
   }
 
   const fetchData = async () => {
     const res = await fetch("https://bb-api.onrender.com/api/user/favourites", {
       headers: { 'Authorization': `Bearer ${user.token}` }
     })
+
+
     const { favourites } = await res.json()
     setFavs(favourites.reverse())
+    setIsLoading(false)
   }
 
 
-  useEffect(() => { fetchData() }, [])
+
+  useEffect(() => {
+    setIsLoading(true)
+    fetchData()
+  }, [])
 
 
 
   return (
 
-
     <>
+
+
       <h1 className="text-center">Your Favourites!!</h1>
       {flash && <div className="text-center" onClick={() => setFlash(null)}>
         {flash}
       </div>
 
       }
+
+      {isLoading === true && <div className=" d-flex justify-content-center text-center"> <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div> </div>}
 
       {favs && favs.map((fav) => (
         <div
@@ -74,7 +89,6 @@ function Favourites() {
       ))
       }
       <div className="mt-5"></div>
-
 
 
     </>
