@@ -12,6 +12,8 @@ const Posts = () => {
     const [text, setText] = useState("")
     const { user } = UseAuthContext()
     const { isLoading, setIsLoading } = UseIsLoading()
+    const [initPost, setInitPosts] = useState("")
+
 
     const fetchData = async () => {
         setIsLoading(true)
@@ -19,6 +21,7 @@ const Posts = () => {
         const json = await res.json()
         if (res.ok) {
             setPosts(json)
+            setInitPosts(json)
             setIsLoading(false)
         }
         if (!res.ok) {
@@ -77,6 +80,27 @@ const Posts = () => {
     }
 
 
+    const handleSearch = (e) => {
+        if (!e.target.value || e.target.value == "") {
+            return setPosts(initPost), setMessage(null)
+
+        }
+
+        const resultsArray = posts
+            .filter(post =>
+                post.text.toLowerCase().includes(e.target.value.toLowerCase())
+                || post.author.name.toLowerCase().includes(e.target.value.toLowerCase()))
+
+
+
+        setPosts(resultsArray)
+        console.log(posts)
+        if (posts === [] || posts.length < 1) setMessage("Nothing Found")
+
+
+    }
+
+
 
     useEffect(() => { fetchData() }, [])
 
@@ -89,6 +113,19 @@ const Posts = () => {
 
 
     return (<>
+        <form >
+            <label htmlFor="">Search: </label>
+            <input
+                type="text"
+                className='form-control mb-4'
+                onChange={handleSearch}
+            />
+
+
+        </form>
+
+
+
         <h1>Posts</h1>
 
         <div className="mb-3">
@@ -96,6 +133,8 @@ const Posts = () => {
             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e) => { setText(e.target.value) }} value={text}></textarea>
             <button className="btn btn-success mt-1" id="textBody" onClick={() => { handlePost() }}>Submit</button>
         </div>
+
+
 
         {message &&
             <div className="alert alert-success" role="alert" id="cardBody" onClick={() => setMessage("")}>
