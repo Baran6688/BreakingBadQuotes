@@ -28,7 +28,7 @@ function Generate() {
     }
 
 
-    const res = await fetch("https://bb-api.onrender.com/api/user/save", {
+    const res = await fetch("https://bbquotes-1a8y.onrender.com/api/user/save", {
       method: "POST",
       headers: {
         'Authorization': `Bearer ${user.token}`,

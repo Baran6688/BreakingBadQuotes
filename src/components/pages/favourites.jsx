@@ -17,7 +17,7 @@ function Favourites() {
   const handleDelete = async (id) => {
     setIsLoading(true)
 
-    const res = await fetch("https://bb-api.onrender.com/api/user/remove/" + id, {
+    const res = await fetch("https://bbquotes-1a8y.onrender.com/api/user/remove/" + id, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}` },
     })
