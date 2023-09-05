@@ -34,7 +34,10 @@ function Favourites() {
 
 
     const { favourites } = await res.json()
-    setFavs(favourites.reverse())
+    if (favourites) {
+      setFavs(favourites.reverse())
+    }
+
     setIsLoading(false)
   }
 

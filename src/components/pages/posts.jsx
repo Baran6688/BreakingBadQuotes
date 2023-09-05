@@ -17,7 +17,7 @@ const Posts = () => {
 
     const fetchData = async () => {
         setIsLoading(true)
-        const res = await fetch("https://bb-api.onrender.com/api/post")
+        const res = await fetch("https://bbquotes-1a8y.onrender.com/api/post")
         const json = await res.json()
         if (res.ok) {
             setPosts(json)
@@ -37,7 +37,7 @@ const Posts = () => {
         }
 
 
-        const res = await fetch("https://bb-api.onrender.com/api/post", {
+        const res = await fetch("https://bbquotes-1a8y.onrender.com/api/post", {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${user.token}`,
@@ -60,7 +60,7 @@ const Posts = () => {
     }
 
     const handleDelete = async (id) => {
-        const res = await fetch("https://bb-api.onrender.com/api/post/" + id, {
+        const res = await fetch("https://bbquotes-1a8y.onrender.com/api/post/" + id, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -94,10 +94,7 @@ const Posts = () => {
 
 
         setPosts(resultsArray)
-        console.log(posts)
         if (posts === [] || posts.length < 1) setMessage("Nothing Found")
-
-
     }
 
 
