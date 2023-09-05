@@ -28,7 +28,7 @@ function Favourites() {
   }
 
   const fetchData = async () => {
-    const res = await fetch("https://bb-api.onrender.com/api/user/favourites", {
+    const res = await fetch("https://bbquotes-1a8y.onrender.com/api/user/favourites", {
       headers: { 'Authorization': `Bearer ${user.token}` }
     })
 
